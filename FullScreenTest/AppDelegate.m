@@ -13,7 +13,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.wantsFullScreenLayout = YES;
+    UILabel * fooView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+    fooView.text = @"This text should be legible";
+    fooView.textColor = [UIColor blackColor];
+    fooView.backgroundColor = [UIColor lightGrayColor];
+    [vc.view addSubview:fooView];
+    
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
+    redView.backgroundColor = [UIColor redColor];
+    [vc.view addSubview:redView];
+    
+    self.window.rootViewController = vc;
+
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
